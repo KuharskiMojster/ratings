@@ -12,6 +12,7 @@ import si.kuharskimojster.ratings.model.ResponseModel;
 @RestController
 @RequestMapping("/v1")
 public class CommentController {
+
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
