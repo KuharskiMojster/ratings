@@ -19,10 +19,6 @@ public class RatingsController {
     @Value(value = "${kafka.ratings.topic}")
     private String kafkaTopic;
 
-    @GetMapping("/health")
-    public ResponseEntity<ResponseModel> getHealth() {
-        return new ResponseEntity<>(new ResponseModel("Ratings app is running...", HttpStatus.OK.value()), HttpStatus.OK);
-    }
 
     private void sendMessage(String msg) {
         kafkaTemplate.send(kafkaTopic, msg);
