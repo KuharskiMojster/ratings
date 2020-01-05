@@ -28,9 +28,9 @@ public class CommentController {
     }
 
     @PostMapping(path = "/comment")
-    public ResponseEntity<ResponseModel> postRating(@RequestParam(name = "userId") String userId, @RequestParam(name = "comment") String comment, @RequestParam(name = "recipeId") String recipeId) {
-        Comment newComennt = new Comment(userId, comment, recipeId);
-        String jsonComment = Comment.toJson(newComennt);
+    public ResponseEntity<ResponseModel> postRating(@RequestParam(name = "userId") Long userId, @RequestParam(name = "comment") String comment, @RequestParam(name = "recipeId") Long recipeId) {
+        Comment newComment = new Comment(userId, comment, recipeId);
+        String jsonComment = Comment.toJson(newComment);
         sendMessage(jsonComment);
         return new ResponseEntity<>(new ResponseModel("User with id: " + userId + " gave a comment [" + comment + "] to the recipe with the given id: " + recipeId, HttpStatus.OK.value()), HttpStatus.OK);
     }

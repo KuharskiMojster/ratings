@@ -25,7 +25,7 @@ public class RatingsController {
     }
 
     @PostMapping
-    public ResponseEntity<ResponseModel> postRating(@RequestParam(name = "userId") String userId, @RequestParam(name = "rating") RatingEnum ratingEnum, @RequestParam(name = "recipeId") String recipeId) {
+    public ResponseEntity<ResponseModel> postRating(@RequestParam(name = "userId") Long userId, @RequestParam(name = "rating") RatingEnum ratingEnum, @RequestParam(name = "recipeId") Long recipeId) {
         Rating rating = new Rating(userId, ratingEnum, recipeId);
         String ratingJson = Rating.toJson(rating);
         sendMessage(ratingJson);

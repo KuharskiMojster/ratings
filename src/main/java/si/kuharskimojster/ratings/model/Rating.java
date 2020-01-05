@@ -5,14 +5,22 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Rating {
 
-    private String userId;
+    private Long userId;
     private RatingEnum ratingEnum;
-    private String recipeId;
+    private Long recipeId;
 
-    public Rating(String userId, RatingEnum ratingEnum, String recipeId) {
+    public Rating(Long userId, RatingEnum ratingEnum, Long recipeId) {
         this.userId = userId;
         this.ratingEnum = ratingEnum;
         this.recipeId = recipeId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public RatingEnum getRatingEnum() {
@@ -23,20 +31,12 @@ public class Rating {
         this.ratingEnum = ratingEnum;
     }
 
-    public String getRecipeId() {
+    public Long getRecipeId() {
         return recipeId;
     }
 
-    public void setRecipeId(String recipeId) {
+    public void setRecipeId(Long recipeId) {
         this.recipeId = recipeId;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public static String toJson(Rating rating) {

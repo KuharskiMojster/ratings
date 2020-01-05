@@ -4,13 +4,37 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Comment {
-    private String userId;
+    private Long userId;
     private String comment;
-    private String recipeId;
+    private Long recipeId;
 
-    public Comment(String userId, String comment, String recipeId) {
+    public Comment(Long userId, String comment, Long recipeId) {
         this.userId = userId;
         this.comment = comment;
+        this.recipeId = recipeId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Long getRecipeId() {
+        return recipeId;
+    }
+
+    public void setRecipeId(Long recipeId) {
         this.recipeId = recipeId;
     }
 
@@ -29,27 +53,5 @@ public class Comment {
         return jsonStr;
     }
 
-    public String getUserId() {
-        return userId;
-    }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public String getRecipeId() {
-        return recipeId;
-    }
-
-    public void setRecipeId(String recipeId) {
-        this.recipeId = recipeId;
-    }
 }
