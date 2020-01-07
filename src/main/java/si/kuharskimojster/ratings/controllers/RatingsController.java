@@ -26,7 +26,7 @@ public class RatingsController {
 
     @PostMapping
     public ResponseEntity<ResponseModel> postRating(@RequestParam(name = "userId") Long userId, @RequestParam(name = "rating") RatingEnum ratingEnum, @RequestParam(name = "recipeId") Long recipeId) {
-        Rating rating = new Rating(userId, ratingEnum, recipeId);
+        Rating rating = new Rating(userId, ratingEnum.getRating(), recipeId);
         String ratingJson = Rating.toJson(rating);
         sendMessage(ratingJson);
         return new ResponseEntity<>(new ResponseModel("User with id: " + userId + " gave a rating " + ratingEnum + " to the recipe with the given id: " + recipeId, HttpStatus.OK.value()), HttpStatus.OK);

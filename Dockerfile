@@ -8,7 +8,7 @@ EXPOSE 8080
 ARG JAR_FILE=/target/ratings-1.0.0-SNAPSHOT.jar
 
 # Add the application's jar to the container
-ADD ${JAR_FILE} recipe-ratings.jar
+ADD ${JAR_FILE} ratings.jar
 
 # Run the jar file
-ENTRYPOINT ["java","-jar","/recipe-ratings.jar"]
+ENTRYPOINT ["java","-jar","/ratings.jar"]
