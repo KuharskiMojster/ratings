@@ -1,4 +1,3 @@
-
 sudo: required
 services:
 - docker
@@ -7,7 +6,7 @@ env:
   global:
   - REGISTRY_USER=rsosem
   - DOCKER_IMAGE=kuharskimojster/ratings:1.0.0-SNAPSHOT-$TRAVIS_JOB_NUMBER
-  - secure: "jFiGB6ropFqQmY/pCl/N1X2YFD92wQZt8iVIAtmS0YzDTzCW5fK1oaFkGYBAMBX95fG15rEkG155kBdxd0D56jzBhKF6J5Zf039SHPcvMMUNlp4dnFFX63xxd8GHLbRLLDTKclO8EykvGQoWd5D966EqQft2acZHKIkU3VzoOOtrORB9UyKdGgEJvp7m1QSI6iYNaveVCCRwy88381eskOm3ZfwABVSC0XZwDb2o1qkYtG0ZuZS+7B+2g6BohRBIP89zNZJIV3CphdrN2azgSXt2K+ozez3oF67VFsGYeZPjrY/Z6+qkAhry3cbc/iNFRle9zX06kzzwEthSTFf6fi5HG8RpIg0bp5OCNOTYZjQPEsBmaxiMZ4lfWEmktGAP8cJdTbhxoLcwnH4XEoLbr9GHg0HiEu1Y4l835q1knMyVZ8LAzIjKLwgZhaUEToZRYMyPvWcnSQ395DOsyh3Yapb3Q22NDXB0p2+8zSfkKlvhzWxexDznf/EtEnip8q59ehdAcAG4vn34e3JePXa1xSO+xdFUqXEulczbU4nLbTLFCKak6eB1XjEP3Mm8n00w9xVB346WsagaUXoA8xSGP1vG+Nfx6vgmiJm/4rgWuZ2c5FtFyORDAcvHlQpCX6jvC2UksnCFiYfrGSmHRLDE68qAUtX8FgBF3q2C79Ba9iw="
+  - secure: pQeRnf9IdaQ4Z2SAcQTFP8lURLWNKM7EtkLd3i+4yxNuWUNPcG9tSkkwo27Bf5BDpknsLaHcmL4enLFQptnC3RorPjskoKszfd6YHYAjSGVJr4JnrdXosyn3NJvx1Zib6Z9Vdr8TmONRbvJJSjVAKZ7Ja2IRGgAwghisBVowiOuiCSzXlz2zLjdDlbcqZiDzgwztZ6RWYtJWNwzAT0ytRdbUW05oFW2GfYU2fHLNtUw2SVxN93zdsO9g/SamYcY9mz7GcU9W/0vhVcpgiDb0bDEVrrNw+W3MrvATzzRRM0nPxzeKElUtU8XNihTe40S9ozT9CY0tehMqNkwW7RoAOklFGVUgoFJPdGFnp8Xe5yX1IzXrdCpIS9TnmhWSzQ8dxoGzZ3ajWRV/NbTVbSSXoZro3ieLuGtO1F5fnvOnN5Z7LFjxBJsIiTlpLDOl1BkTWqN/mBUqQhgzRYNFoPZxpAdp2kdz3to0yk3Majg3+T+YO6guzgUqESNTgBPO3yEqkZJbeRAdbaXSe6Lh7H2NhnCptvj/+mUGX40uKhaYFo3+1bSG+YXG/Bvuf9LHv9sn9D6MBDPX1YD+nWhZzoKjCSV87ZW3xbSEn/oRZG0Af0lxyppXTDJhSTYmVGtfjOlyZktbzfRXEBmONP7IrR1X5qOyypmCCdFrIjIaPAzZuuY=
 script:
 - mvn clean package -U
 - docker build -t "$DOCKER_IMAGE" .
@@ -16,3 +15,5 @@ after_script:
 after_success:
 - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin
 - docker push "$DOCKER_IMAGE"
+before_install:
+- chmod +x mvnw
