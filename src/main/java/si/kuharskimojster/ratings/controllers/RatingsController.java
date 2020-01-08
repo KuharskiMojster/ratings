@@ -31,6 +31,4 @@ public class RatingsController {
         sendMessage(ratingJson);
         return new ResponseEntity<>(new ResponseModel("User with id: " + userId + " gave a rating " + ratingEnum + " to the recipe with the given id: " + recipeId, HttpStatus.OK.value()), HttpStatus.OK);
     }
-
-
 }
